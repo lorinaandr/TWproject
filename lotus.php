@@ -5,7 +5,7 @@ session_start();
   $log = true;}
 else{
   $log=false; }
-  // pentru a calcula statistici privind paginile accesate
+// pentru a calcula statistici privind paginile accesate
 $user_id=$_SESSION['id'];
 $page=$_SERVER['PHP_SELF'];
 $query_page = "SELECT * from articole where page ='".$page."' ";
@@ -16,8 +16,8 @@ if(mysqli_num_rows($results) > 0 ){
   }
 }
 mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
   <link rel="stylesheet" href="../projectTW/css/style.css">
   <link rel="stylesheet" href="../projectTW/css/responsive.css">
   <link rel="shortcut icon" href="https://www.meetsun.ro/wp-content/themes/MeetSun/images/meet-sun-logo50.png" type="image/x-icon">
-  <title>Plantonline</title>  
+  <title>Plantonline</title> 
 </head>
 <body>
   <header id="masthead" class="site-header">
@@ -39,8 +39,8 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
         </div>
        <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+           <ul class="responsive-menu">
+              <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -68,7 +68,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+          <?php
          if($log== true){ 
            echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
@@ -77,12 +77,13 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
           </li></ul> </li></ul> 
+                 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -110,7 +111,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+          <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -122,7 +123,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
           </li>
       </ul>
@@ -133,36 +134,42 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
 		<main class="d-flex-row">
             <div class="content d-flex-row">
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
-               
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
+                <h1 class="titlu-plante"> Lotus, Nelumbo nucifera sau Nufar termal </h1>
+								<img  class= "img-container" alt="Lotus" src="../projectTW/img/lotus.jpg">
+                
+              <p class="detalii">Floarea de Lotus de la origini pana azi  </p>
+               <p> Niste vechi savanti egipteni au observat ca floarea de lotus in timpul noptii duce o viata cu totul diferita. In timpul noptii floarea de lotus se inchide si planta trage si tine floarea in apa pe parcursul noptii.
 
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
+Asa a aparut asocierea pentru floarea de lotus cu renasterea si Soarele. In esenta, floarea de lotus sta inflorita cam trei zile, intrun iaz. Infloreste dimineata pana dupa-amiaza, cu programul de culcare seara!
 
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
+Se poate considera ca simbolul floare de lotus are diferite intelesuri in diferitele culturi ale lumii, dar in esenta toate au multe similitudini.</p>
+             
+              <p class="detalii">Floarea Spiritualitatii, semnificatii si beneficii aduse conditiei umane</p>
+               <p>Asa cum am zis in introducere legat de semnificatia florii de lotus, aceasta planta este asociata cu renasterea!  Aceasta simbolistica este o consecinta a retragerii in apa, noaptea, si reaparitia florii de lotus dimineata, a doua zi. Este asociata si cu Soarele, pentru ca si el dispare de pe cer noapte, si renaste ziua. Prin urmare, floarea de lotus a ajuns sa simbolizeze Soarele si creatia. In multe hieroglife, apare o floare de lotus alaturi de aparitia lui Nun (apa primordiala) care il poarta pe ea pe Zeul Soarelui.</p>
 
+              <p class="detalii">Lotusul – Simbolistica, traditie, mituri si legende</p> 
+              <p>Lotusul este in principiu utilizat pentru a simboliza bucuria, armonia, pacea, puritatea si sinceritatea. Lotusul este floarea dedicata lui Buddha si altor nenumarate divinitati. Lotusul se ridica deasupra apei din lacuri si infloreste creand o puternica senzatie de armonie in mediul inconjurator. Cand s-a nascut Buddha, lotusul a creat un drum pe care sa paseasca acesta, ceea ce il face o floare a paradisului.
 
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
+Lotusul este de asemenea foarte pretuit de Taoisti si este emblema lui Ho Hsien Ku, zeita care se numara printre Cei Opt Nemuritori din Taoism si care este reprezentata tinand in mana un lotus. Ea foloseste lotusul pentru a ne binecuvanta cu frumusete si noroc in dragoste.
 
+Lotusul este de asemenea un simbol al dragostei de familie, prieteni si asociati. Lotusul este cea mai buna forma de simbol feng shui pentru emisia de energie pozitiva chi, energie care aduce o minte clara si impacata celor care si-au propus teluri marete si sunt hotarati sa le realizeze. Reflectia luminii prin intermediul florii de lotus sporeste chiar si mai mult capacitatea simbolului de a emite energie pozitiva chi si de a anula energiile negative.
 
-              <div class="scroll-left">
+Lotusul semnifica, dintre toate tipurile de flori, puritatea suprema si perfectiunea deoarece se ridica gratios din pamantul ud, mai frumoasa decat orice. Fiecare parte a acestei plante, de la radacina pana la petale, are calitati tamaduitoare. Din punct de vedere ezoteric, floarea de lotus ne încarca spiritual si ne ofera splendoare exterioara, aratandu-ne adevarata fata a realitatii. Floarea de lotus exprima bucurie, puritate.</p>
+<div class="scroll-left">
          <div class="inner">
              <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
+               <img src="../projectTW/img/lotus1.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus2.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus3.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus4.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus5.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus6.jpg" alt="Lotus">
+               <img src="../projectTW/img/lotus7.jpg" alt="Lotus">
               </div>
           </div>
          </div>
              </div>
             </div>
-
         </main>
         <p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
  <section class="articole">
@@ -183,6 +190,7 @@ Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum
           </figure>
   </section>
  </div>
+
     <div id="footer">
 
         <div class="copyright">

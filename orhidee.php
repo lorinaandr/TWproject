@@ -37,10 +37,10 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
               </h2>
               <div class="site-description"> Descopera lumea plantelor </div>
         </div>
-       <div class="navbar">
+      <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+           <ul class="responsive-menu">
+             <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -77,12 +77,12 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+          <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </li></ul> 
+          </li></ul></li> </ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -110,7 +110,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+           <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -119,7 +119,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
              <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
@@ -131,38 +131,43 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
     </header>
 	<div class="wrapper">
 		<main class="d-flex-row">
-            <div class="content d-flex-row">
+			 <div class="whitespace-bar"></div>
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
+                <h1 class="titlu-plante"> Orhideea, floarea numită şi elixirul iubirii! </h1>
+								<img  class= "img-container" alt="Orhidee" src="../projectTW/img/orhidee.jpg">
+                
+								<p> Dintre toate florile orhideea are o însemnătate aparte, despre ea existând numeroase credinţe populare, care mai sunt şi astăzi prezente.
+
+Folosită în special ca plantă ornamentală, această floare delicată, graţioasă şi exotică a fost şi este încă un simbol al dragostei, luxului, frumuseţii şi puterii.</p>
                
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
-
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
-
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
-
-
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
-
-
-              <div class="scroll-left">
+               <p>Orhideea mai este numită şi floarea iubirii, motivul fiind acela că nu este pretenţioasă  şi poate înflori oriunde, în orice condiţii climatice.
+Orhideea poate constitui un cadou ideal, potrivit oricărei ocazii, fie că vorbim de o aniversare, un botez sau o nuntă. Însă cel mai adesea este dăruită femeii iubite, livrând un mesaj de iubire durabilă, afecţiune necondiţionată, armonie şi perfecţiune spirituală.</p>
+              <p class="detalii">Culoarea florilor de orhidee poate avea diverse simboluri.  </p>
+               <p> Culoarea roşie înseamnă veselie, pasiune şi dragoste.
+Rozul simbolizează romantismul, dragostea şi prietenia.
+Vişiniul este asociat cu spiritul de lider şi curajul.
+Portocaliul reprezintă entuziasmul, fericirea, inteligenşa şi energia.
+Verdele este un simbol al dezvoltării, stabilităţii, armoniei şi fertilităţii.
+Albastrul aduce un mesaj de încredere, înţelepciune, loialitate, credinţă, adevăr, linişte interioară şi calm.
+Movul este asociat cu înţelepciunea, demnitatea, independenţa, creativitatea, misterul şi magia.
+Albul înseamnă siguranţa, puritatea şi optimismul.
+Culoarea maro promovează ideea de stabilitate şi luciditate.
+</p>
+<div class="scroll-left">
          <div class="inner">
              <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
+               <img src="../projectTW/img/orh1.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh2.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh3.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh4.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh5.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh6.jpg" alt="Orhidee">
+               <img src="../projectTW/img/orh7.jpg" alt="Orhidee"> 
               </div>
           </div>
          </div>
              </div>
-            </div>
-
+          
         </main>
         <p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
  <section class="articole">
@@ -182,8 +187,8 @@ Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum
             
           </figure>
   </section>
- </div>
-    <div id="footer">
+</div>
+ <div id="footer">
 
         <div class="copyright">
             Copyright - Website &copy; 2020

@@ -5,7 +5,7 @@ session_start();
   $log = true;}
 else{
   $log=false; }
-  // pentru a calcula statistici privind paginile accesate
+// pentru a calcula statistici privind paginile accesate
 $user_id=$_SESSION['id'];
 $page=$_SERVER['PHP_SELF'];
 $query_page = "SELECT * from articole where page ='".$page."' ";
@@ -16,8 +16,8 @@ if(mysqli_num_rows($results) > 0 ){
   }
 }
 mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')");
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,8 +39,8 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
         </div>
        <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+           <ul class="responsive-menu">
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -68,7 +68,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+              <?php
          if($log== true){ 
            echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
@@ -77,10 +77,10 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
           </li></ul> </li></ul> 
         <ul class="menu">
@@ -110,7 +110,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+          <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -133,38 +133,28 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
 		<main class="d-flex-row">
             <div class="content d-flex-row">
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
-               
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
-
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
-
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
-
-
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
-
-
-              <div class="scroll-left">
+                <h1 class="titlu-plante"> Pelin (Artemisia absinthium), planta-medicament care curata tot organismul  </h1>
+								<img  class= "img-container" alt="Pelin" src="../projectTW/img/pelin.png">
+                <p class="detalii"> Descriere </p>
+								<p> Pelinul este un arbust peren si aromat, cu frunze verzi-cenusii acoperite de perisori albi si matasosi. Inflorescentele mici si galbene apar vara si toamna, in manunchiuri. Planta de gradina foarte populara in multe parti ale lumii, pelinul este originar din Europa, Asia si Africa. Creste adesea pe terenurile virane si pe marginea drumurilor. Frunzele, tulpinile si florile se usuca si sunt folosite la prepararea de infuzii si tincturi. Pelinul este una dintre cele mai amare plante cunoscute si se foloseste in doze foarte mici la prepararea unor bauturi alcoolice precum absintul si vermutul.</p>
+               <p class="detalii">Actiune</p>
+               <p>Indicat in afectiunile hepatice si diabetice, datorita calitatilor sale depurative, pelinul se bucura de aprecieri si cand vine vorba de alte alte afectiuni, de edeme renale pana la gastrite. Iar calitatile sale terapeutice il recomanda inclusiv pentru cresterea rezistentei organismului impotriva bolilor virale. Are insa si contraindicatii, asa ca ar trebui sa-l folosim doar in cunostinta de cauza.Este un tonic amar, emanagog si antihelmitic, colagog, antibacterian, antiseptic, schizoticid. La proprietatile amare ale pelinului trebuie amintit si un efect colotrop, stimularea functionalitatii vezicii biliare, ceea ce contribuie la imbunatatirea starii generale. Calitatile pelinului (pelinul alb) sunt date de principiile sale amare (absintina, artabsina, anabsintina, etc), ulei volatil, vitaminele B6 si C, substante de natura carotenoidica, fitosteroli, lactone, acizi organici, si nu numai.</p>
+              <p class="detalii">Administrare </p>
+               <p> Cea mai la indemana de preparat este infuzia de pelin. „Avem nevoie de una-doua lingurite de frunze uscate, la o cana de apa clocotita. Se recomanda consumul a doua ceaiuri pe zi, inainte de mese, pentru stimularea poftei de mancare sau dupa mese, pentru alte afectiuni din randul celor amintite”, spune Elena Badea. Un alt produs fitoterapeutic, pe care putem sa-l obtinem acasa este tinctura, preparata din 20 g herba uscata la 100 ml alcool. „Se administreaza cate 15-20 picaturi intr-o infuzie de menta indulcita cu miere de albine, cu 30 minute inainte de mese, ca aperitiv”, recomanda specialistul. Vinul de pelin este un alt produs cu efecte extraordinare pentru sanatate. Avem nevoie de cca 30 g varfuri inflorite care se pun la macerat intr-un litru de vin alb. Se consuma ca aperitiv si tonic, cate un paharel inainte de mese sau ca digestiv, dupa mese. Dintre produsele pe baza de pelin mai trebuie amintite pulberea din frunze uscate, recunoscuta pentru efectele sale febrifuge si vermifuge si siropul digestiv si vermifug (pregarat din 150 g varfuri inflorite la 1000 ml apa fiarta si 500 g miere). Pelinul si-a demonstrat calitatile terapeutice si in uz extern, putand fi folosit in bai locale, dar si sub forma de comprese cu decoct pentru tratarea ranilor greu vindecabile, ulceratii ale pielii si intepaturi de insecte, precum si sub forma de cataplasme puse pe luxatii si umflaturi. </p>
+           <div class="scroll-left">
          <div class="inner">
              <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
+               <img src="../projectTW/img/pelin1.jpg" alt="Pelin">
+               <img src="../projectTW/img/pelin2.jpg" alt="Pelin">
+               <img src="../projectTW/img/pelin3.jpg" alt="Pelin">
+               <img src="../projectTW/img/pelin4.jpg" alt="Pelin">
               </div>
           </div>
          </div>
              </div>
             </div>
-
         </main>
-        <p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
+       <p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
  <section class="articole">
  
 <figure>

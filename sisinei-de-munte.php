@@ -39,8 +39,8 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
         </div>
        <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+           <ul class="responsive-menu">
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -68,7 +68,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+           <?php
          if($log== true){ 
            echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
@@ -80,7 +80,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
           </li></ul> </li></ul> 
         <ul class="menu">
@@ -110,7 +110,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+                 <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -119,48 +119,39 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
           </li>
       </ul>
      </nav>
     </div>
     </header>
-	<div class="wrapper">
-		<main class="d-flex-row">
+  <div class="wrapper">
+    <main class="d-flex-row">
+       <div class="whitespace-bar"></div>
             <div class="content d-flex-row">
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
-               
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
+                <h1 class="titlu-plante"> Sisinei de munte </h1>
+                <img  class= "img-container" alt="Sisinei de munte" src="../projectTW/img/sisineidemunte.jpg">
+              <p>Deosebit de atractiva, planta a suferit din cauza culegerii nechibzuite, ea gasindu-si refugiu in poienile codrilor neumblati si pe pajistile ierboase de la joasa inaltime, uneori urcand pana la limita padurii.
+Face parte din familia Ranunculaceae. Numele si-l trage din latinescul „pulsare” care inseamna „a lovi, a pulsa”. Numele este demn de reusita caci inima pulseaza semnificativ la vederea ei, o asemenea minunatie nu te poate lasa indiferent. </p>
 
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
+ <p>     Este o planta destul de scunda, cam 15 cm, dar poate ajunge si la 30 cm in timpul infloririi iar in perioada formarii de seminte tija florala cu capsula de seminte se poate inalta chiar la 1 m. Fiind planta de zona uscata se preteaza bine la cultura in gradina, radacina ei ajungand pana la 1 m adancime. In mare parte, dediteii seamana cu florile de colt in ceea ce priveste perisorii: frunzele dispuse in forma de rozeta sunt lipsite de perisori, in schimb cele de dinaintea florii si floarea insasi este acoperita de perisori multi si lungi care unduiesc in adierea vantului. Ati ghicit! Perisorii apara planta de frig. Ca orice floare de munte, are portul pitic si floarea deosebit de mare in raport cu corpul; floarea atinge si 10 cm! Din cauza antocianelor, ele contrasteaza minunat cu frunzele uneori roscate, florile avand culoarea violet existand si o varietate alba. Florile apar in martie-aprilie si explozia de flori care se succed una dupa alta te face sa te gandesti la latinescul „pulsare”. Florile campanulate atrag o multime de insecte polenizatoare. Mirosul florii este practic inexistent, dar nici nu-i trebuie pentru a atrage simpatia albinelor si deopotriva pe cea a oamenilor.</p>
 
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
+<p>     Dediteii traiesc la umbra padurilor de conifere, pe pamant calcaros. Daca pamantul are mult humus, dediteii sunt in pericol de disparitie, fiind sensibili la supradoza de ingrasamant dar si la „imbratisarea” mortala a ierburilor din jur.</p>
+
+<p>     Aceasta sensibilitate a ei este de neinteles daca aflam ce contine ea: toate partile sunt otravitoare si mai contine si protoanemonin, o substanta cu un deosebit de puternic efect care provoaca iritatii pielii si mucoaselor. Persoanelor sensibile , o simpla atingere a plantei poate provoca basici si inrosirea pielii. Doamne fereste sa inghita animalul planta caci nu va mai avea rinichi si stomac. Planta si-a creat acest sistem defensiv deoarece straluceste ca un turcoaz in mijlocul solului maroniu al padurilor de conifere. Planta mai contine saponina, terebentina si tanin.</p>
+
+<p>     Din cauza acestor substante si a perisorilor, in unele zone planta a fost numita „capcana dracului” si „barba dracului” facandu-se referire la toxicitatea ascunsa sub un farmec irezistibil.</p> 
 
 
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
+                </div>
+            </div>
+            <div class="whitespace-bar">
 
-
-              <div class="scroll-left">
-         <div class="inner">
-             <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
-              </div>
-          </div>
-         </div>
-             </div>
             </div>
 
         </main>
@@ -183,6 +174,7 @@ Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum
           </figure>
   </section>
  </div>
+
     <div id="footer">
 
         <div class="copyright">

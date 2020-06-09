@@ -25,7 +25,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../projectTW/css/style.css">
-  <link rel="stylesheet" href="../projectTW/css/responsive.css">
+   <link rel="stylesheet" href="../projectTW/css/responsive.css">
   <link rel="shortcut icon" href="https://www.meetsun.ro/wp-content/themes/MeetSun/images/meet-sun-logo50.png" type="image/x-icon">
   <title>Plantonline</title>  
 </head>
@@ -39,8 +39,8 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
         </div>
        <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+            <ul class="responsive-menu">
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -68,7 +68,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+             <?php
          if($log== true){ 
            echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
@@ -80,9 +80,9 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+           <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </li></ul> 
+          </li></ul></li> </ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -110,7 +110,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+              <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -119,6 +119,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
                 }
           ?>
+          
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
@@ -133,30 +134,22 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
 		<main class="d-flex-row">
             <div class="content d-flex-row">
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
-               
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
-
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
-
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
-
-
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
-
-
-              <div class="scroll-left">
+                <h1 class="titlu-plante"> Ricin (Ricinus communis) </h1>
+								<img  class= "img-container" alt="Ricin" src="../projectTW/img/ricin.png">
+                <p class="detalii"> Descriere </p>
+								<p> Ricinul este o planta tropicala oleaginoasa, originara din India si Africa. In prezent este cultivata la noi in tara in scop ornamental, industrial si medicinal. Uleiul extras din semintele de ricin are valoare terapeutica dar este folosit si drept combustibil fiind solubil in alcool.Semintele de ricin contin gliceride, lectine, uleiuri vegetale, acidul ricinoleic, acizi oleici, stearici, linoleici, un alcaloid (ricinina), o toxoalbumina (ricina), enzime, vitamina E, betacarotenoizi, lipide, proteine.
+</p>
+               <p class="detalii">Actiune</p>
+               <p>Datorita acidului ricinoleic, uleiul obtinut din semintele de ricin are proprietati purgative (folosit in acest scop de catre medicina populara din timpuri stravechi), acidul ricinoleic stimuleaza peristaltimul intestinal, producand purgatie.</p>
+              <p class="detalii">Administrare </p>
+               <p> In uz intern este indicat in caz de constipatie, parazitoze intestinale, iar in uz extern pentru alopecie, bataturi, negi, papiloame, veruci, acnee, ulceratii, cicatrici cheloide. Uleiul din seminte de ricin se extrage in laboratoare specializate si se foloseste in uz intern doar in doza recomandata de medic (datorita marii toxicitati) sau preparate standardizate bine dozate. In uz extern se maseaza cu ulei din seminte de ricin pielea in caz de acnee (fiind un bun agent antibacterian natural), alopecie (contine acizi omega 3 importanti pentru hranirea radacinii firului de par), pentru bataturi, crapaturi, negi, alunite se maseaza zona de 2-3 ori pe zi. Se pot indeparta vergeturile (femeile gravide sau care au nascut) prin masarea pe burta si coapse in fiecare zi; cicatricele ramase dupa o operatie sau alta taietura sau rana se pot vindeca lasand o compresa inmuiata in ulei de ricin timp de cateva ore pe zi. Din cauza prezentei in compozitie a toxoalbuminei, ricina poate produce aglutinarea globulelor rosii cauzand moartea - consumul a cateva seminte de ricin poate fi mortal. Este indicat din cauza toxicitatii sa nu se depaseasca doza recomandata si doar in fomule standardizate preparate de laboratoare specializate.</p>
+<div class="scroll-left">
          <div class="inner">
-             <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
+             <div class="col ">
+               <img src="../projectTW/img/ricin1.jpg" alt="Ricin">
+               <img src="../projectTW/img/ricin2.jpg" alt="Ricin">
+               <img src="../projectTW/img/ricin3.jpg" alt="Ricin">
+               <img src="../projectTW/img/ricin4.jpg" alt="Ricin">
               </div>
           </div>
          </div>
@@ -183,6 +176,8 @@ Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum
           </figure>
   </section>
  </div>
+
+
     <div id="footer">
 
         <div class="copyright">

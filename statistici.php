@@ -1,46 +1,73 @@
-<?php 
+<?php
 session_start();
  require_once 'config.php';
- if(isset($_SESSION['loggedin'] )){
+
+  if(isset($_SESSION['loggedin'] )){
   $log = true;}
 else{
   $log=false; }
-  // pentru a calcula statistici privind paginile accesate
-$user_id=$_SESSION['id'];
-$page=$_SERVER['PHP_SELF'];
-$query_page = "SELECT * from articole where page ='".$page."' ";
-$results = mysqli_query($link,$query_page);
-if(mysqli_num_rows($results) > 0 ){
-  while($row = mysqli_fetch_assoc($results)) {
-   $title = $row['nume_articol'];
+
+//Numarul total de articole pe site
+$articole = mysqli_query($link,"SELECT * FROM articole");
+$total_articole = mysqli_num_rows($articole);
+
+// Numarul total de pasionati de plante ( useri inregistrati)
+$total_useri = mysqli_query($link,"SELECT * FROM useri");
+$total_useri = mysqli_num_rows($total_useri);
+
+// numarul total de useri ce au ierbar
+$useri_cu_ierbar = mysqli_query($link,"SELECT DISTINCT id_user FROM ierbar");
+$useri_cu_ierbar =  mysqli_num_rows($useri_cu_ierbar);
+
+// numarul total de imagini uploadate de useri
+$poze_useri = mysqli_query($link,"SELECT * FROM ierbar");
+$poze_useri = mysqli_num_rows($poze_useri);
+
+// plante populare 
+$sql  = "SELECT * FROM ierbar group by filetitle order by count(filetitle) desc limit 3";
+$result = mysqli_query($link,$sql);
+$plante_populare = array();
+if(mysqli_num_rows($result) > 0 ){
+  while($row = mysqli_fetch_assoc($result)) {
+    $plante_populare[] = $row;
   }
 }
-mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')");
+// cele mai citite articole
+$pageviews = mysqli_query($link,"SELECT * FROM pageviews group by page order by count(page) desc limit 3");
+$total_pageviews = array();
+if(mysqli_num_rows($pageviews) > 0 ){
+  while($rows = mysqli_fetch_assoc($pageviews)) {
+    $total_pageviews[] = $rows;
+  }
+}
+
+
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../projectTW/css/style.css">
   <link rel="stylesheet" href="../projectTW/css/responsive.css">
   <link rel="shortcut icon" href="https://www.meetsun.ro/wp-content/themes/MeetSun/images/meet-sun-logo50.png" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" href="https://www.xul.fr/rss.xml" title="Your title">
   <title>Plantonline</title>  
 </head>
 <body>
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.php" rel="home"> Plantonline </a>
-              </h2>
-              <div class="site-description"> Descopera lumea plantelor </div>
+             	 <a href="homepage.php" rel="home"> Plantonline </a>
+             	</h2>
+             	<div class="site-description"> Descopera lumea plantelor </div>
         </div>
-       <div class="navbar">
+     <div class="navbar">
         <nav>
-          <ul class="responsive-menu">
-            <li>
+            <ul class="responsive-menu">
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -68,7 +95,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+       <?php
          if($log== true){ 
            echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
@@ -80,9 +107,9 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </li></ul> 
+          </li></ul></li> </ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -110,7 +137,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                           </li>
                      </ul> 
          </li>
-            <?php
+                <?php
          if($log== true){ 
            echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
            echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
@@ -119,7 +146,7 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
             echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
                 }
           ?>
-          <li class="search-container">
+         <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
              <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
@@ -128,46 +155,85 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
       </ul>
      </nav>
     </div>
-    </header>
+		</header>
 	<div class="wrapper">
 		<main class="d-flex-row">
+			 <div class="whitespace-bar"></div>
             <div class="content d-flex-row">
                 <div class="homepage">
-                <h1 class="titlu-plante"> Floarea-reginei (Leontopodium alpinum Cass.), numită și floarea-de-colț </h1>
-								<img  class= "img-container" alt="Floare-de-colt" src="../projectTW/img/floaredecolt.jpg">
-               
-								<p>  Este o specie de plante erbacee, perene, din genul Leontopodium Cass., familia Asteraceae.
+                 <a  href="csv.php">Descarca CSV</a> <br>
+                  <a  href="pdf.php">Descarca PDF</a>
+                <h1 class="home">Statisticile site-ului nostru </h1>
+                <p> Numarul total de articole postate pe site : <?php echo $total_articole;?> </p>  
+                <p> Numarul total de pasionati de plante : <?php echo $total_useri ;?> </p>  
+                <p> Numarul total de utilizatori cu ierbare proprii : <?php echo $useri_cu_ierbar;?> </p>  
+                <p> Numarul total de imagini postate de utilizatori : <?php echo $poze_useri;?> </p> 
+                <p>Cele mai citite articole : <?php 
+                foreach($total_pageviews as $views){
+                   echo "<br>";
+                    echo "<br>";
+                    echo $views['title'];
+                }?> </p>
 
-    Planta este lânat-tomentoasă, înaltă de 5 – 20 cm, cu inflorescențe compuse din capitule, înconjurate de numeroase bractee lungi, alb - argintii, lânos - păroase. Dacă în România planta ajunge doar până la înălțimea de maximum 20 cm, ea poate crește în alte țări până la 50 – 80 cm. Inflorescența este îmbrăcată cu frunze păroase, unele mai mari, altele mai mici și care iau forma unei steluțe.Aceasta este formată până la zece inflorescențe cu numeroase și minuscule flori, încadrate de 5-15 bactee albe, dispuse radiar, ce dau întregului ansamblu înfățișarea unei flori. Planta este acoperită cu peri catifelați, argintii, ce îi conferă o eleganță deosebită. Perioada de înflorire este iulie - august.</p>
+              
+                  <div  id="chart_wrap"> <div id="donutchart">
+                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                           google.charts.load("current", {packages:["corechart"]});
+                           google.charts.setOnLoadCallback(drawChart);
+                           function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Categorii', 'Overall'],
+                                 <?php 
+                                 $sql  = "SELECT * FROM ierbar group by filetitle order by count(filetitle) desc limit 3";
+                                  $sql2  = "SELECT count(*) FROM ierbar group by filetitle order by count(filetitle) desc limit 3";
+                                  $count = array();
+                                      $result = mysqli_query($link,$sql);
+                                      $r = mysqli_query($link,$sql2);
+                                      if(mysqli_num_rows($r) > 0 ){
+                                       while($ro = mysqli_fetch_assoc($r)) {
+                                        $count[] = $ro;
+                                            }
+                                        }
+                                    if(mysqli_num_rows($result) > 0 ){
+                                           foreach($count as $c){
+                                       if($row = mysqli_fetch_assoc($result)) {
+                                                     
+                                        echo "['".$row['filetitle']."',".$c['count(*)']."],";
+                                      }
+                                      }
+                                         }
+                                     ?>
+                                  ]);
 
-<p class="detalii">Habitat</p>  <p>Crește în munți calcaroși, în pajiști de pe versanți abrupți și însoriți sau pe stânci. La noi crește în Munții Carpați, fiind declarată monument al naturii din 1933 și ocrotită. Floarea reginei poate fi întâlnită în Munții Maramureșului și Munții Rodnei, Obcinele Bucovinei, Rarău, Ceahlău, Ciucaș, Munții Bucegi, Făgăraș, Cozia și Retezat. În afara spațiului românesc, floarea reginei înfrumusețează zone din Abruzzi, Alpi, Balcani, Carpați, Pirinei, dar și din Asia Centrală și de Est.</p>
+                          var options = {
+                           title: 'Clasamentul celor mai populare plante colectate',
+                            pieHole: 0.4,
+                             colors: ['#98FB98', '#8FBC8F', '#228B22', '#90EE90', '#556B2F'],
+                             is3D: true, width: '100%',
+                               height: '100%',
+                               //legend: 'none',
+                               pieSliceText: 'label',
+                               pieStartAngle: 100,
+                            };
 
+                       var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                       chart.draw(data, options);
+                        }
+          </script>    </div>  </div>
+                </div>
+            </div>
+            <div class="whitespace-bar">
 
-<p class="detalii">Denumiri</p> <p>  Mai este cunoscută și ca Floare-de-colț (denumire introdusă în perioada comunistă) sau cu denumirea germană, Edelweiß.
-Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum) există și următoarele denumiri: albumeală, albumiță, floare-de-colț, (rar) edelvais, (reg.) flocoșele (pl.), steluță, floarea-doamnei. </p> 
-
-
-              <div class="scroll-left">
-         <div class="inner">
-             <div class="col col1">
-               <img src="../projectTW/img/fl-colt.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt1.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt2.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt3.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt4.jpg" alt="Floare-de-colț">
-                <img src="../projectTW/img/fl-colt5.jpg" alt="Floare-de-colț">
-               <img src="../projectTW/img/fl-colt6.jpg" alt="Floare-de-colț">
-              </div>
-          </div>
-         </div>
-             </div>
             </div>
 
         </main>
-        <p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
+
+<p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
  <section class="articole">
  
 <figure>
+
   <a href="aloevera.html" class="a-art-3c"> Aloe vera, 7 beneficii nebanuite </a>
         <img src="https://aradbranding.com/trade/wp-content/uploads/2020/01/Aloe-Vera.jpg" alt="Aloe Vera, 7 beneficii nebanuite" class="img-art-3c" title="Aloe Vera, 7 beneficii nebanuite">
       </figure>
@@ -183,8 +249,9 @@ Conform Dicționarului de sinonime, pentru floarea-reginei (Leontopodium alpinum
           </figure>
   </section>
  </div>
-    <div id="footer">
 
+    <div id="footer">
+        
         <div class="copyright">
             Copyright - Website &copy; 2020
         </div>
