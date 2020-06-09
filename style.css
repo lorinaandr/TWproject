@@ -420,10 +420,7 @@ display: inline-flex;
  0%   { -moz-transform: translateX(100%); }
  100% { -moz-transform: translateX(-100%); }
 }
-@-webkit-keyframes scroll-left {
- 0%   { -webkit-transform: translateX(100%); }
- 100% { -webkit-transform: translateX(-100%); }
-}
+
 
 /* articole */
 .articole {
