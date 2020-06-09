@@ -83,6 +83,9 @@ cursor: pointer;
   text-align: center;
   padding: 30px;
 }
+.documentatie {
+  font-size: 25px;
+}
 /*navigation bar */
 .navbar {
     background-color: #99ff33;
