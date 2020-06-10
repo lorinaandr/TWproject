@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro" >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Documentatie Plantonline</title> 
+</head>
+<article>
+ <header>
+ 	<h1 property="schema:name"> Documentatie Plantonline </h1>
+ </header>
+ <div role="contentinfo">
+   <section typeof="sa:AuthorsList">
+  <h2>Autori</h2>
+  <ul>
+    <li typeof="sa:ContributorRole" property="schema:author">
+      <span typeof="schema:Author">
+        <meta property="schema:givenName" content="Lorina">
+        <meta property="schema:additionalName" content="Andreea">
+        <meta property="schema:familyName" content="Racovita">
+        <span property="schema:name">Racovita Lorina Andreea</span>
+      </span>
+      <ul>
+        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+          <a href="mailto:racovita.lorina@gmail.com"
+             property="schema:email">racovita.lorina@gmail.com</a>
+        </li>
+      </ul>
+    </li>
+        <li typeof="sa:ContributorRole" property="schema:author">
+      <span typeof="schema:Author">
+        <meta property="schema:givenName" content="Stefana">
+        <meta property="schema:additionalName" content="Diana">
+        <meta property="schema:familyName" content="Iosub">
+        <span property="schema:name">Iosub Stefana Diana</span>
+      </span>
+    </li>
+  </ul>
+</section>
+ 		</div>
+ 		<section>      
+      <h2>Informatii generale despre proiect</h2>
+        <p> In dezvoltarea proiectului s-au folosit HTML5 si CSS3.
+        Site ul Plantonline este menit sa ofere utilizatorilor informatii utile despre diferite plante oferind totodata suport pentru organizarea colectiilor reprezentarilor grafice ale plantelor presate si atributelor aferente. Plantonline adopta designul Web responsive oferind o interfata usor de utilizat pe mai multe device-uri, adoptand de asemenea si tehnici de prevenire a atacurilor. </p>
+     </section> 
+       <section>    
+        <h3 >  Functionalitati </h3> 
+    <p>Utilizatorii vor putea accesa informatiile publice ale site-ului precum articolele, profilul altor utilizatori, pagina principala. Pentru a-si putea crea propriul ierbar online si a accesa statisticile site ului, acestia vor fi nevoiti sa completeze formularul de inregistrare, si se vor loga in cont folosind adresa de e-mail si parola.Datele userului sunt introduse in baza de date a site-ului, dar mai intai se va aplica asupra lor functia mysqli_real_escape_string - folosinta pentru a preveni SQL injection , parola fiind stocata in alt format, dupa ce a fost aplicata functia password_hash asupra ei. Odata logati in cont, acestia vor avea acces la pagina profilului si pagina de statistici a site-ului. 
+ Restrictia paginilor "Profil" si "Statistici" s-a facut pe baza unui test asupra unei variabile ce este setata atunci cand utilizatorul se logheaza in cont. Din meniu acestia pot accesa diferite articole despre diverse categorii de plante ( montane, exotice, medicinale) la finalul caruia vor putea vizualiza o mica galerie cu reprezentari ale plantei respective animata folosind CSS. De asemenea pot folosi optiunea search prezenta in bara de meniu pentru a cauta articole sau alti utilizatori pentru a le vizualiza ierbarele. S-a folosit  functia mysqli_real_escape_string() pentru a implementa aceasta functionalitate.</p>
+    </section>
+       <section>    
+        <h4 >  Profil  </h4> 
+    <p> Pe pagina profilului, acestia au optiunea de a-si alege o poza de profil, de a se deloga, a introduce imagini cu descrierea aferenta, si de a-si schimba parola contului, optiune disponibila si in pagina de login.Utilizatorii vor avea o imagine prestabilita in momentul crearii contului. Diverse erori vor aparea in momentu in care utilizatorul va incerca sa incarce in ierbarul propriu fisiere ce nu contin formatul jpg, png sau jpeg, sau  dimensiunea va fi prea mare. Odata indeplinite conditiile, imaginea va fi stocata in baza de date si afisata pe profilul acestuia. In stocarea imaginilor si informatiilor despre imagine, am folosit functia mysqli_real_escape_string() pentru a preveni SQL injection.</p>
+    </section>
+      <section>    
+        <h5 >  Statistici  </h5> 
+    <p> Pe pagina statistici, utilizatorii logati vor putea vedea diverse statistici referitoare la site, precum numarul de useri inregistrati, cele mai populare plante colectate, acestia putand descarca informatiile in format CSV sau PDF, dupa preferinte.  Pentru formatul PDF, am folosit biblioteca FPDF, iar pentru formatul CSV functia fputcsv(). Pentru reprezentarea grafica a clasamentului celor mai populare plante am utilizat serviciul Google Charts. Statisticile au fost realizate facand diferite query-uri asupra bazei de date.</p>
+    </section>
+    <section>    
+        <h6 >  Funtionalitati implementate de fiecare membru al echipei    </h6> 
+   <section>
+   	<h6 aria-level="7"> Racovita Lorina Andreea</h6>
+   	<p> Pe partea de HTML si CSS, am implementat design-ul paginii principale ce este prezent pe tot website-ului, designul paginilor pentru articole,pagina statistici,pagina pentru resetarea parolei, pagina de profil a unui user, modul cum arata profilul unui alt user si sectiunea "Ce au mai parcurs alti cititori", designul responsive si totodata galeria de pe pagina articolelor.Initial pagina de profil a fost realizata de Stefana insa, pe parcurs, a fost nevoie sa introducem funtionalitati precum delogare, schimbare imagine profil si am schimbat designul acesteia. Pe partea de PHP am realizat validarea formularului de inregistrare,cu introducerea datelor in baza de date, folosind functia mysqli_real_escape_string() pentru a preveni SQL injection si stocand parola intr-un format rezultat dupa aplicarea functiei password_hash().Validarea formularului de login, si scriptul de logout, password reset/parola uitata. Funtionalitatea Search disponibila in bara de meniu a fost creata cu scopul de a cauta articole sau tipuri de plante si alti utilizatori ai site-ului. M-am ocupat, de asemenea, de page management- ce consta in restrictia paginilor "Statistici" si "Profil" atunci cand utilizatorul nu este conectat. Am implementat functionalitatile specifice profilului unui utilizator precum schimbarea imaginii de profil, adaugarea de imagini in ierbar. Pe pagina "Statistici" am realizat diferite query-uri asupra bazei de date pentru a oferi diverse statistici ale site-ului, facand posibila descarcarea acestora in format CSV si PDF si reprezentarea grafica a clasamentului celor mai populare plante.</p>
+   </section>
+<section>
+   	<h6 aria-level="7"> Iosub Stefana Diana </h6>
+   	<p> La raport activitate am incercat sa fac un grafic care sa imi afiseze numarul de accesari pe pagina. Am creat mai intai o tabela countdetail si dupa am incercat sa fac partea de php. La pagini statice am vrut sa fac in asa fel incat sa putem sa uploadam si sa stocam imagini din baza de date. Am facut mai intai o tabela images, dupa care am facut un formular unde sa pot sa selectez imaginea si dupa sa dau upload. </p>
+   </section>
+
+    </section>
+     
+ <figure typeof="sa:image"> <img src="../projectTW/Plantonline.png" alt="Diagrama UML"></figure>
+</article>
+
+</html>
+

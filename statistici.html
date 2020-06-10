@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-   <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../projectTW/css/style.css">
@@ -13,13 +13,13 @@
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.html" rel="home"> Plantonline </a>
-              </h2>
-              <div class="site-description"> Descopera lumea plantelor </div>
+             	 <a href="homepage.html" rel="home"> Plantonline </a>
+             	</h2>
+             	<div class="site-description"> Descopera lumea plantelor </div>
         </div>
-      <div class="navbar">
+     <div class="navbar">
         <nav>
-           <ul class="responsive-menu">
+            <ul class="responsive-menu">
            <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.html"><i class="fa fa-home"></i> </a> </li>
@@ -51,9 +51,11 @@
           <li class="lista"> <a href="login.html"><i class="fa fa-sign-in"></i></a> </li>
           <li class="lista"> <a href="statistici.html"><i class="fa fa-file-text-o"></i></a> </li>
           <li class="search-container">
+            <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit"><i class="fa fa-search"></i></button>
-          </li></ul></li> </ul> 
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+          </form>
+          </li></ul> </li></ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.html">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -81,91 +83,54 @@
                           </li>
                      </ul> 
          </li>
-          <li class="lista"> <a href="logout.php">Delogare</a> </li>
+          <li class="lista"> <a href="login.html">Login</a> </li>
           <li class="lista"> <a href="statistici.html">Statistici</a> </li>
-          <li class="search-container">
+         <li class="search-container">
+            <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit"><i class="fa fa-search"></i></button>
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+          </form>
           </li>
       </ul>
      </nav>
     </div>
-    </header>
-  <div class="wrapper">
-    <main class="d-flex-row">
-        <div class="content d-flex-row">
-          <div class="content-profil">
-              <form class="profil-user">
-             <img class="img-containerprofil" alt="profil" src="../projectTW/img/profile.jpg">
-               <div class="bio">
-              <h1>Popescu Andrei</h1>
-              <p>Ierbolog si fotograf</p>
-              <p>Imi place sa petrec timp in natura, explorand si descoperind noi plante, colectand imagini. Sper sa va placa si voua imagnile surprinse de mine.</p>
-              <p>35</p>
-               </div>
-             </form>
-          <div class="prfnav">
-             <label for="profileImage"> 
-              <a> Schimba imagine profil</a></label> 
-                <input type="file" name="profileImage" id="profileImage">
-                <label for="profileImage"> 
-              <a href="pwreset.php" class="reset"> Schimba parola</a></label> 
-          </div>
-        </div>
-       </div>
+		</header>
+	<div class="wrapper">
+		<main class="d-flex-row">
+			 <div class="whitespace-bar"></div>
+            <div class="content d-flex-row">
+                <div class="homepage-stat">
+                <h1>Statistici </h1>
+                <h2> Cel mai citit articol </h2>
+               <img class="img-container" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTLk0EZFkPeIKRTzMZI8R0FsOVspGgkcL3Stb_tqorjNVNH8ga" alt="Multiplele efecte terapeutice ale florilor de galbenele(Calendula Officinalis)"  title="Multiplele efecte terapeutice ale florilor de galbenele(Calendula Officinalis)">
+               <p>Pe langa faptul ca sunt un decor plin de viata, florile de galbenele sunt si o planta cu puternice virtuti terapeutice. Galbeneaua din gradina (sau de pe pervaz) poate fi folosita in salata, ca ingredient pentru supa... </p>
+                </div>
+            </div>
+            <div class="whitespace-bar">
 
-    </main>
-     
-         <div class="gallery-upload">
-   
-          <form class="formupload" action="album.php" method="POST" enctype="multipart/form-data">
-           <input type="text" name="filetitle" placeholder="Titlu imagine...">
-          <input type="text" name="filedesc" placeholder="Descriere imagine...">
-          <input type="file" name="file"> <button type="submit" name="submit">Posteaza</button> </form> </div>
- <section class="album">
-        <div class="responsive-album">
-          <div class="gallery">
-            <a href="../projectTW/img/fl-colt2.jpg">
-           <img src="../projectTW/img/fl-colt2.jpg" alt="Cinque Terre" title="Titlu imagine">
-           </a>
-              <div class="desc">Descriere imagine</div>
-           </div>
-        </div>
-     <div class="responsive-album">
-        <div class="gallery">
-        <a href="../projectTW/img/fl-colt.jpg">
-         <img src="../projectTW/img/fl-colt.jpg" alt="Cinque Terre" title="Titlu imagine">
-        </a>
-        <div class="desc">Descriere imagine</div>
-        </div>
-     </div>
-      <div class="responsive-album">
-      <div class="gallery">
-      <a  href="../projectTW/img/fl-colt4.jpg">
-      <img src="../projectTW/img/fl-colt4.jpg" alt="Cinque Terre" title="Titlu imagine">
-       </a>
-       <div class="desc">Descriere imagine</div>
-      </div>
-      </div>
-       <div class="responsive-album">
-      <div class="gallery">
-      <a  href="../projectTW/img/aloe4.jpg">
-      <img src="../projectTW/img/aloe4.jpg" alt="Cinque Terre" title="Titlu imagine">
-       </a>
-       <div class="desc">Descriere imagine</div>
-      </div>
-      </div>
-        <div class="responsive-album">
-      <div class="gallery">
-      <a  href="../projectTW/img/aloe3.jpg">
-      <img src="../projectTW/img/aloe3.jpg" alt="Cinque Terre" title="Titlu imagine">
-       </a>
-       <div class="desc">Descriere imagine</div>
-      </div>
-      </div>
+            </div>
 
+        </main>
+
+<p class="titlu-art"> Ce au mai parcurs alti cititori... </p>
+ <section class="articole">
+ 
+<figure>
+  <a href="aloevera.html" class="a-art-3c"> Aloe vera, 7 beneficii nebanuite </a>
+        <img src="https://aradbranding.com/trade/wp-content/uploads/2020/01/Aloe-Vera.jpg" alt="Aloe Vera, 7 beneficii nebanuite" class="img-art-3c" title="Aloe Vera, 7 beneficii nebanuite">
+      </figure>
+      <figure>
+        <a href="galbenele.html" class="a-art-3c"> Multiplele efecte terapeutice ale florilor de galbenele</a>
+          <img src="../projectTW/img/galbenele1.jpg" alt="Multiplele efecte terapeutice ale florilor de galbenele(Calendula Officinalis)" class="img-art-3c" title="Multiplele efecte terapeutice ale florilor de galbenele">
+         
+        </figure>
+        <figure>
+          <a href="pelin.html" class="a-art-3c"> Pelinul, planta-medicament care curata tot organismul </a>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQU_sKiWcJ3IQY9MWNn5PZWDxXCQv8CzRfXcLsaWB8mIdVtChS5" alt="Pelinul (Artemisia absinthium), planta-medicament care curata tot organismul " class="img-art-3c" title="Pelinul (Artemisia absinthium), planta-medicament care curata tot organismul" >
+            
+          </figure>
   </section>
-  </div>
+ </div>
 
     <div id="footer">
         
