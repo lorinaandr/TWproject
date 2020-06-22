@@ -1,12 +1,5 @@
 <?php
- require_once 'config.php';
-session_start();
-$id = $_SESSION['idAltUser'] ;
- $nume = $_SESSION['prenumeAltUser']. ' ' . $_SESSION['numeAltUser'];
-   if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
+ require_once 'prf-a-u.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,14 +17,14 @@ else{
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.html" rel="home"> Plantonline </a>
+               <a href="homepage.php" rel="home"> Plantonline </a>
               </h2>
               <div class="site-description"> Descopera lumea plantelor </div>
         </div>
       <div class="navbar">
         <nav>
            <ul class="responsive-menu">
-           
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -57,23 +50,19 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
              <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'><i class='fa fa-bar-chart'></i></a> </li>"; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-            echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
-                }
+         require_once 'meniu-responsive.php';
           ?>
          <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
              <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </ul> 
+          </li></ul></li> </ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -99,16 +88,12 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
            <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'>Statistici</a> </li>"; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-            echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
-                }
+        require_once 'meniu-normal.php';
           ?>
           <li class="search-container">
             <form action="search.php" method="POST">
@@ -126,50 +111,18 @@ else{
           <div class="content-profil">
               <form class="profil-user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
            <?php
-
-            $q = mysqli_query($link,"SELECT * FROM useri where id = '".$_SESSION['idAltUser']."'");
-            if($row = mysqli_fetch_assoc($q)){
-               if($row['image'] == ""){
-                       
-            echo "<img class='img-containerprofil' alt='profil' src='../projectTW/img/profile.jpg'> "; }
-            else {
-               echo "<img class='img-containerprofil' alt='profil' src='../projectTW/profil/".$row['image']."'> ";
-            }  }
+           require_once 'prf-a-u-img.php';
             ?> 
                <div class="bio">
-              <h1> <?php echo $nume ?> </h1>
-            
+              <h1> <?php echo $nume ?> </h1>    
                </div>
-             </form>
-       
+             </form>       
         </div>
        </div>
-
     </main>
-     
-       
  <section class="album">
         <?php
-    require_once 'config.php';
-    $sql =  " SELECT * FROM ierbar where id_user = '$id' order by id desc; ";
-    $stmt= mysqli_stmt_init($link); 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
-     $results= mysqli_stmt_get_result($stmt);
-   while ($row = mysqli_fetch_assoc($results)) {
-      echo "<div class='responsive-album'>";
-      echo "<div class='gallery'>";
-      echo "<a href='../projectTW/gallery/".$row['file']."'>";
-        echo "<img src='../projectTW/gallery/".$row['file']. "' alt='".$row['filetitle']."' title='".$row['filetitle']."'>";
-        echo "</a>";
-        echo "<div class='desc'> ".$row['filedesc']." </div>";
-        echo "</div>";
-      echo "</div>";
-    }
-  }
-  mysqli_close($link);
+    require_once 'album-alt-user.php';
   ?>
   </section>
   </div>
