@@ -1,80 +1,6 @@
 <?php
-// Create database connection
-session_start();
- require_once 'config.php';
- $msg = "";
- $id=  $_SESSION['id'];
- $nume = $_SESSION['prenume']. ' ' . $_SESSION['nume'];
-  if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
-
-if( isset($_POST['submit'])){
-$file=$_FILES['file'];
- $imageTitle = $imageDesc =  "";
-$fileName=$file["name"];
-$fileType=$file["type"];
-$fileSize=$file["size"];
-$fileTempName=$file["tmp_name"];
-$fileError=$file["error"];
-
-$fileExt=explode(".",$file["name"]);
-$fileActualExt= end($fileExt) ;
-
-$allowed = array("jpg","jpeg","png");
-if($fileError == 0){
-
-if(in_array($fileActualExt, $allowed)){
-
-
-if($fileSize <2000000){
-
-$imageDesc = mysqli_real_escape_string($link, $_POST['filedesc']);
-$imageTitle = mysqli_real_escape_string($link, $_POST['filetitle']);
-//$file = mysqli_real_escape_string($link, $_POST['file']);
-
-  $target = "gallery/" .$fileName;
-  $sql = "INSERT INTO ierbar (id_user, file, filedesc, filetitle) VALUES ('$id' ,'$fileName', '$imageDesc' , '$imageTitle')";
-    // execute query
-  if(mysqli_query($link, $sql)){
-    //$msg = "Imagine uploadata cu succes.";
-    
-     move_uploaded_file($_FILES['file']['tmp_name'], $target);  // adaugam imaginea in fisierul creat. 
-     header("Location: profil.php");
-
-} else{
-    echo "ERROR: Not able to execute $sql. " . mysqli_error($link);
-    exit();
-}  
-
-}
-else{
-   $msg =" Fisierul ales este prea mare.";
-    
-  }
-}
-else{
-$msg  =  "Fisierul ales nu este o imagine.";
-
-} }
-else {$msg = "Trebuie sa alegeti o imagine.";}
-}
-
-
-  //$result = mysqli_query($link, "SELECT * FROM ierbar where id_user = '$id';");
-  
-//mysqli_close($link);
-$id = $_SESSION['id'];
-  if(isset($_POST['submit-profile'])){
- move_uploaded_file($_FILES['profileImage']['tmp_name'],"profil/".$_FILES['profileImage']['name']);
-                $q = mysqli_query($link,"UPDATE useri SET image ='".$_FILES['profileImage']['name']."' WHERE id = '".$_SESSION['id']."'");
-        }
-
+ require_once 'upload.php';
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -84,20 +10,38 @@ $id = $_SESSION['id'];
   <link rel="stylesheet" href="../projectTW/css/style.css">
   <link rel="stylesheet" href="../projectTW/css/responsive.css">
   <link rel="shortcut icon" href="https://www.meetsun.ro/wp-content/themes/MeetSun/images/meet-sun-logo50.png" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>  
+  <script type="text/javascript">
+    function delete_image(id){  
+  if(confirm("Sunteti sigur ca doriti sa stergeti din ierbar?"))
+  {
+    var file = $("#sterge-poza").val();
+    $.ajax({
+      type:"POST",
+      url:"delete-images.php",
+      data:{'id':id},
+      success: function(data){
+       header('Location: profil.php');
+      }
+    });
+  }
+ } 
+
+  </script>
   <title>Plantonline</title>  
 </head>
 <body>
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.html" rel="home"> Plantonline </a>
+               <a href="homepage.php" rel="home"> Plantonline </a>
               </h2>
               <div class="site-description"> Descopera lumea plantelor </div>
         </div>
       <div class="navbar">
         <nav>
           <ul class="responsive-menu">
-           
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -123,24 +67,20 @@ $id = $_SESSION['id'];
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                           <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
              
          <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'><i class='fa fa-bar-chart'></i></a> </li>"; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-            echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
-                }
+         require_once 'meniu-responsive.php';
           ?>
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </ul> 
+          </li></ul> </li></ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -166,16 +106,12 @@ $id = $_SESSION['id'];
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
               <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'>Statistici</a> </li>"; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-            echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
-                }
+        require_once 'meniu-normal.php';
           ?>
          <li class="search-container">
             <form action="search.php" method="POST">
@@ -191,18 +127,9 @@ $id = $_SESSION['id'];
     <main class="d-flex-row">
         <div class="content d-flex-row">
           <div class="content-profil">
-              <form class="profil-user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data"> 
-           <!-- <img class="img-containerprofil" alt="profil" src="../projectTW/img/profile.jpg"> -->
+              <form class="profil-user" action="profil-img.php" method="POST" enctype="multipart/form-data"> 
            <?php
-
-            $q = mysqli_query($link,"SELECT * FROM useri where id = '$id'");
-            if($row = mysqli_fetch_assoc($q)){
-               if($row['image'] == ""){
-                       
-            echo "<img class='img-containerprofil' alt='profil' src='../projectTW/profil/profile.jpg'> "; }
-            else {
-               echo "<img class='img-containerprofil' alt='profil' src='../projectTW/profil/".$row['image']."'> ";
-            }  }
+         require_once 'profil-img.php' ;
             ?> 
              
                <div class="bio">
@@ -220,43 +147,32 @@ $id = $_SESSION['id'];
                  <label for="pwreset"> 
               <a href="logout.php" class="reset"> Delogare</a></label> 
           </div>
+
           </form>
            <span class="error"><?php echo $msg; ?></span>
         </div>
        </div>
      
     </main>
-     
-         <div class="gallery-upload">
+      <div class="gallery-upload">
              
-          <form class="formupload" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+          <form class="formupload" action="album.php" method="POST" enctype="multipart/form-data">
+           <input type="text" name="album-name" placeholder="Denumire album...">
+            <button type="submit" name="submit-album">Creaza album</button>
+           </form> 
+         </div>
+           <div class="gallery-upload">
+          <form class="formupload" action="upload.php" method="POST" enctype="multipart/form-data">
            <input type="text" name="filetitle" placeholder="Denumire planta...">
           <input type="text" name="filedesc" placeholder="Descriere imagine...">
           <input type="file" name="file"> <button type="submit" name="submit">Posteaza</button>
            </form> 
          </div>
+     
  <section class="album">
+
    <?php
-    require_once 'config.php';
-    $sql =  " SELECT * FROM ierbar where id_user = '$id' order by id desc; ";
-    $stmt= mysqli_stmt_init($link); 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
-     $results= mysqli_stmt_get_result($stmt);
-   while ($row = mysqli_fetch_assoc($results)) {
-      echo "<div class='responsive-album'>";
-      echo "<div class='gallery'>";
-      echo "<a href='../projectTW/gallery/".$row['file']."'>";
-        echo "<img src='../projectTW/gallery/".$row['file']. "' alt='".$row['filetitle']."' title='".$row['filetitle']."'>";
-        echo "</a>";
-        echo "<div class='desc'> ".$row['filedesc']." </div>";
-        echo "</div>";
-      echo "</div>";
-    }
-  }
-  mysqli_close($link);
+    require_once 'display.php';
   ?>
 
   </section>
