@@ -1,22 +1,5 @@
 <?php 
-session_start();
- require_once 'config.php';
- if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
-  // pentru a calcula statistici privind paginile accesate
-$user_id=$_SESSION['id'];
-$page=$_SERVER['PHP_SELF'];
-$query_page = "SELECT * from articole where page ='".$page."' ";
-$results = mysqli_query($link,$query_page);
-if(mysqli_num_rows($results) > 0 ){
-  while($row = mysqli_fetch_assoc($results)) {
-   $title = $row['nume_articol'];
-  }
-}
-mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')");
-
+ require_once 'art.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,16 +49,12 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
             <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
-           echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-            echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
-                }
+         require_once 'meniu-responsive.php';
           ?>
           <li class="search-container">
             <form action="search.php" method="POST">
@@ -108,16 +87,12 @@ mysqli_query($link,"insert into pageviews values('','$page','$title','$user_id')
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
             <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
-           echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-            echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
-                }
+         require_once 'meniu-normal.php';
           ?>
           <li class="search-container">
             <form action="search.php" method="POST">
