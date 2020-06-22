@@ -1,12 +1,6 @@
 <?php 
-session_start();
- require_once 'config.php';
- if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
-
-?>
+ require_once 'head.php';
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,14 +16,14 @@ else{
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.html" rel="home"> Plantonline </a>
+               <a href="homepage.php" rel="home"> Plantonline </a>
               </h2>
               <div class="site-description"> Descopera lumea plantelor </div>
         </div>
        <div class="navbar">
         <nav>
             <ul class="responsive-menu">
-           
+           <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -55,23 +49,19 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
              <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'><i class='fa fa-bar-chart'></i></a> </li>"; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-            echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
-                }
+         require_once 'meniu-responsive.php';
           ?>
           <li class="search-container">
             <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
           </form>
-          </li></ul> </ul> 
+          </li></ul> </li></ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -97,16 +87,12 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
               <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
-           echo "<li class='lista'> <a href='statistici.html'>Statistici</a> </li>"; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-            echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
-                }
+         require_once 'meniu-normal.php';
           ?>
           
           <li class="search-container">
@@ -124,59 +110,8 @@ else{
             <div class="content d-flex-row">
                 <div class="homepage">
                   <h1 class="search-title"> Căutare </h1>
-                     <?php if(isset($_POST['submit-search'])){
-                      $search  = mysqli_real_escape_string($link,$_POST['search']);
-                        $sqlUser= "SELECT * FROM useri WHERE nume LIKE '%$search%' OR prenume LIKE '%$search%' OR email LIKE '%$search%' ";
-                       $resultUser= mysqli_query($link,$sqlUser);
-                       $queryResultUser= mysqli_num_rows($resultUser);
-                       if($queryResultUser > 0) {
-                        if ($queryResultUser == 1) { echo" S-a găsit ".$queryResultUser." rezultat.";
-                      }else {
-                        echo" S-au găsit ".$queryResultUser." rezultate.";
-                      }
-                        while($row = mysqli_fetch_assoc($resultUser) ){
-                          $_SESSION['numeAltUser'] = $row['nume'];
-                          $_SESSION['prenumeAltUser'] = $row['prenume'];
-                            $_SESSION['idAltUser'] = $row['id'];
-                          echo "<a href='profil-alt-user.php' ><div class='article-box' >
-                          <p class='search-img-user'>".$row['image']."</p>
-                          <p class='search-user'>".$row['nume'].' '.$row['prenume']."</p>
-                          </div> ";
-
-                        }
-
-                       }else{
-                        $sql= "SELECT * FROM articole WHERE nume_articol LIKE '%$search%' OR text_articol LIKE '%$search%'  OR tip LIKE '%$search%' ";
-                      $result = mysqli_query($link,$sql);
-                      $queryResult = mysqli_num_rows($result);
-                      
-                       if($queryResult > 0) {
-                        if ($queryResult == 1) { echo" S-a găsit ".$queryResult." rezultat.";
-                      }else {
-                        echo" S-au găsit ".$queryResult." rezultate.";
-                      }
-                        while($row = mysqli_fetch_assoc($result) ){
-                          echo "<a href='".$row['page']."' ><div class='article-box' >
-                          <p>".$row['nume_articol']."</p>
-                          <p>".$row['descriere']."</p>
-                          <p>".$row['data_articol']."</p> 
-                          </div> ";
-
-                          }
-                         }else {
-                        echo "Nu am gasit rezultate. ";
-                       }
-                       }
-
-                       
-
-                     }
-                                          
-
+                     <?php require_once 'cautare.php'  ;                         
                       ?>
-
-                
-
              </div>
             </div>
 
