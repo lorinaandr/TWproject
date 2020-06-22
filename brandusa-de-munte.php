@@ -1,11 +1,5 @@
 <?php 
-session_start();
- require_once 'config.php';
- if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
-
+ require_once 'art.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,14 +17,14 @@ else{
   <header id="masthead" class="site-header">
         <div class="site-branding">
              <h2 class="site-title">
-               <a href="homepage.html" rel="home"> Plantonline </a>
+               <a href="homepage.php" rel="home"> Plantonline </a>
               </h2>
               <div class="site-description"> Descopera lumea plantelor </div>
         </div>
        <div class="navbar">
         <nav>
             <ul class="responsive-menu">
-           
+            <li>
               <ul class="responsive">
               <li class="lista"><a href="homepage.php"><i class="fa fa-home"></i> </a> </li>
           <li class="lista"><a href="#"><i class="fa fa-bars"></i> </a>
@@ -56,20 +50,19 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
-            <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> "; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-                }
+         <?php
+         require_once 'meniu-responsive.php';
           ?>
-          <li class="lista"> <a href="statistici.html"><i class="fa fa-file-text-o"></i></a> </li>
-          <li class="search-container">
+         <li class="search-container">
+            <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit"><i class="fa fa-search"></i></button>
-          </li></ul> </ul> 
+             <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+          </form>
+          </li></ul> </li></ul> 
         <ul class="menu">
           <li class="lista"><a href="homepage.php">Acasa</a> </li>
           <li class="lista"><a href="#">Meniu </a>
@@ -95,19 +88,18 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
            <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> "; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-                }
+         require_once 'meniu-normal.php';
           ?>
-          <li class="lista"> <a href="statistici.html">Statistici</a> </li>
           <li class="search-container">
+            <form action="search.php" method="POST">
             <input class="search" type="text" placeholder="Search..." name="search">
-            <button class="searchbtn" type="submit"><i class="fa fa-search"></i></button>
+            <button class="searchbtn" type="submit" name="submit-search"><i class="fa fa-search"></i></button>
+          </form>
           </li>
       </ul>
      </nav>
