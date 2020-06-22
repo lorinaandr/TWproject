@@ -3,7 +3,7 @@
 require_once "config.php";
 // Functions to filter user inputs
 function filterName($field){
-    $field = filter_var(trim($field), FILTER_SANITIZE_STRING);
+    $field = filter_var(trim($field), FILTER_SANITIZE_STRING); //Remove all HTML tags from a string
     // Validate user name
     if(filter_var($field, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
         return $field;
@@ -23,8 +23,8 @@ function filterEmail($field){
     }
 }
 
-$numeErr = $prenumeErr = $emailErr = $parolaErr = $confirmareparolaErr =  "";
-$nume = $prenume = $email = $parola = $confirmareparola = "";
+$numeErr = $prenumeErr = $emailErr = $parolaErr = $confirmareparolaErr = $securitateErr = $raspunsErr =  "";
+$nume = $prenume = $email = $parola = $confirmareparola = $securitate =  $raspuns = "";
 // Procesam datele formularului
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 // Validam numele
@@ -36,8 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $numeErr = "Numele introdus nu este valid.";
         }
     }
-  
-               
 //Validam prenumele
       if(empty($_POST["prenume"])){
         $prenumeErr = "Va rugam sa introduceti prenumele dumneavoastra.";
@@ -74,23 +72,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
 }
+//Validam intrebare de securitate
+ if(empty(trim($_POST["securitate"]))){
+        $securitateErr = "Va rugam sa alegeti o intrebare.";     
+    } 
+    //Validam raspunsul
+ if(empty(trim($_POST["raspuns"]))){
+        $raspunsErr = "Trebuie sa rapundeti la intrebare.";     
+    } 
+
    // verificam sa vedem daca avem erori inainte de a introduce in baza de date
-    if(empty($numeErr) && empty($prenumeErr) && empty($emailErr) && empty($parolaErr)&& empty($confirmareparolaErr)){
+    if(empty($numeErr) && empty($prenumeErr) && empty($emailErr) && empty($parolaErr)&& empty($confirmareparolaErr) && empty($securitateErr) && empty($raspunsErr)){
         
- $nume = mysqli_real_escape_string($link, $_REQUEST['nume']);
-$prenume = mysqli_real_escape_string($link, $_REQUEST['prenume']);
-$email = mysqli_real_escape_string($link, $_REQUEST['e-mail']);
-$parola = mysqli_real_escape_string($link, $_REQUEST['parola']);
-  //$parola=password_hash($parola, PASSWORD_DEFAULT); 
+ $nume = mysqli_real_escape_string($link, $_POST['nume']);
+$prenume = mysqli_real_escape_string($link, $_POST['prenume']);
+$email = mysqli_real_escape_string($link, $_POST['e-mail']);
+$parola = mysqli_real_escape_string($link, $_POST['parola']);
+$securitate = mysqli_real_escape_string($link,$_POST['securitate']);
+$raspuns = mysqli_real_escape_string($link, $_POST['raspuns']);
+
+  $parola=password_hash($parola, PASSWORD_DEFAULT); 
+$image = "profile.jpg";
 // Attempt insert query execution
-$sql = "INSERT INTO useri (nume, prenume, email, parola) VALUES ('$nume', '$prenume', '$email','$parola')";
+$sql = "INSERT INTO useri (nume, prenume, email, parola,image,intrebare,raspuns) VALUES (?, ?, ?,?,?,?,?)";
 
-
-if(mysqli_query($link, $sql)){
+if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sssssss", $nume,$prenume,$email,$parola,$image,$securitate,$raspuns);
+if(mysqli_stmt_execute($stmt)){
      header("location: autentifMsg.html");
 } else{
     echo "ERROR: Not able to execute $sql. " . mysqli_error($link);
-}
+} }
 
 // Close connection
 mysqli_close($link);
@@ -98,5 +111,4 @@ mysqli_close($link);
         }
 }
 
-                   ?>
-                 
+         ?>
