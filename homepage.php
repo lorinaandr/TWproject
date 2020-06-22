@@ -1,9 +1,5 @@
  <?php
- session_start();
-  if(isset($_SESSION['loggedin'] )){
-  $log = true;}
-else{
-  $log=false; }
+ require_once 'head.php';
   ?>
 
 <!DOCTYPE html>
@@ -54,16 +50,12 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
            <?php
-         if($log== true){ 
-           echo "  <li class='lista'> <a href='profil.php'><i class='fa fa-user'></i></a> </li> ";
-           echo "<li class='lista'> <a href='statistici.php'><i class='fa fa-bar-chart'></i></a> </li>"; }
-           else {
-           echo"  <li class='lista'> <a href='login.php'><i class='fa fa-sign-in'></i></a> </li>";
-            echo "<li class='lista'> <a href='autentification.php'><i class='fa fa-file-text-o'></i></a> </li>"; 
-                }
+        require_once 'meniu-responsive.php';
           ?>
           
           <li class="search-container">
@@ -98,16 +90,12 @@ else{
                                <li><a href="sisinei-de-munte.php">Sisinei de munte</a></li>
                             </ul>
                           </li>
+                          <li class="mnt"><a href="multicriteriala.php">Cautare multicriteriala</a>
+                          </li>
                      </ul> 
          </li>
 					  <?php
-         if($log== true){ 
-           echo " <li class='lista'> <a href='profil.php'>Profil</a> </li> ";
-           echo "<li class='lista'> <a href='statistici.php'>Statistici</a> </li>"; }
-           else {
-           echo" <li class='lista'> <a href='login.php'>Login</a> </li> ";
-            echo "<li class='lista'> <a href='autentification.php'>Inregistrare</a> </li>"; 
-                }
+         require_once 'meniu-normal.php';
           ?>
 					
           <li class="search-container">
@@ -128,7 +116,7 @@ else{
                 <h1 class="home">Plantonline </h1>
                 <p> Bun venit pe platforma Plantonline! Aici iti vei putea crea propriul ierbar digital, adaugand poze si informatii despre plantele colectionate de tine. Imparte pasiunea colectionarii de plante cu cei din jur si gasesteti prieteni ce impart aceeasi pasiune cu tine. Totodata poti citi articole interesante despre diferite plante si afla informatii utile despre utilizarea acestora. </p>
 
-                <a href="documentatie.html"> Documentatie </a>
+                <a href="documentatie.html" class="documentatie"> Documentatie proiect </a>
                     <?php
          if($log== true){ 
            echo " "; }
@@ -161,8 +149,6 @@ else{
           </figure>
   </section>
  </div>
-
-
     <div id="footer">
         
         <div class="copyright">
