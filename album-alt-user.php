@@ -1,11 +1,10 @@
         <?php
     require_once 'config.php';
-   $sql =  " SELECT * FROM ierbar where id_user = '$id' and album=' ' or filetitle=' ' order by id desc; ";
-    $stmt= mysqli_stmt_init($link); 
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
+   $sql =  " SELECT * FROM ierbar where id_user = ? and album=' ' or filetitle=' ' order by id desc; ";
+  $stmt= mysqli_stmt_init($link); 
+if($stmt = mysqli_prepare($link, $sql)){
+    mysqli_stmt_bind_param($stmt, "i",$id);
+if(mysqli_stmt_execute($stmt)){
      $results= mysqli_stmt_get_result($stmt);
    while ($row = mysqli_fetch_assoc($results)) {
       echo "<div class='responsive-album'>";
@@ -16,15 +15,14 @@
         echo "</a>";
         echo "<div class='desc'> ".$row['filedesc']." </div>";
         echo "</div>";
-      echo "</div>";
+      echo "</div>";}
     }
   }
-  $album = " SELECT * FROM albums where id_user = '$id' and private = 0";
+  $album = " SELECT * FROM albums where id_user = ? and private = 0";
  $stmt= mysqli_stmt_init($link); 
- if(!mysqli_stmt_prepare($stmt,$album)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
+if($stmt = mysqli_prepare($link, $album)){
+    mysqli_stmt_bind_param($stmt, "i",$id);
+if(mysqli_stmt_execute($stmt)){
      $result= mysqli_stmt_get_result($stmt);
    while ($row = mysqli_fetch_assoc($result)) { 
 echo "<div class='responsive-album'>";
@@ -35,7 +33,7 @@ echo "<div class='responsive-album'>";
         echo "</a>";
        echo "<div class='desc'> </div>";
         echo "</div>";
-      echo "</div>";
+      echo "</div>";}
    } } 
 
 
