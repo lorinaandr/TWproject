@@ -13,32 +13,28 @@ else{
 if(isset($_GET['id'])){
 $_SESSION['album-id'] = $_GET['id'];}
 
-$sql = "SELECT * from albums where id='".$_SESSION['album-id']."' ";
-$stmt= mysqli_stmt_init($link); 
-
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
+$sql = "SELECT * from albums where id=?  ";
+ $stmt= mysqli_stmt_init($link); 
+if($stmt = mysqli_prepare($link, $sql)){
+    mysqli_stmt_bind_param($stmt, "i",$_SESSION['album-id']);
+if(mysqli_stmt_execute($stmt)){
      $result= mysqli_stmt_get_result($stmt);
    while ($row = mysqli_fetch_assoc($result)) { 
-    $album_name = $row['name'];
-  } }
+    $album_name = $row['name'];}
+  } } 
 
 
 if( isset($_POST['submit'])){
 $album_id = $_SESSION['album-id'];
 //echo $album_id;
-$sql = "SELECT * from albums where id='$album_id' ";
-$stmt= mysqli_stmt_init($link); 
-
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-   echo "Eroare sql";
-    }else{
-    mysqli_stmt_execute($stmt);
+$sql = "SELECT * from albums where id= ? ";
+ $stmt= mysqli_stmt_init($link); 
+if($stmt = mysqli_prepare($link, $sql)){
+    mysqli_stmt_bind_param($stmt, "i",$album_id);
+if(mysqli_stmt_execute($stmt)){
      $result= mysqli_stmt_get_result($stmt);
    while ($row = mysqli_fetch_assoc($result)) { 
-    $album_name = $row['name'];
+    $album_name = $row['name'];}
   } }
 
 $file=$_FILES['file'];
